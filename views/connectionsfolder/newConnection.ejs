@@ -1,0 +1,56 @@
+<%- include('../partials/header.ejs')%>
+
+<div class="content">
+<!-- <main class="formstyle"> -->
+    <!-- <h4> Fill the form below to start a new Connection </h4> -->
+    <form action='/connections' method='POST'>
+        <div>
+        <table class="formstyle">
+            <tr>
+                <td><label for="category"> <b>Category</b></label></td>
+                <td><input type="text" id = "category" name = "category" class="inputs" placeholder="Enter the category" required></td> 
+            </tr>
+            <tr>
+                <td><label for="title"> <b>Title</b> </label></td>
+                <td><input type="text" id = "title" name = "title" class="inputs" placeholder="Enter the title" required></td> 
+            </tr>
+            <!-- <tr>
+                <td><label for="host"> <b> Host :</b> </label></td>
+                <td><input type="text" id = "host" name = "host" class="inputs" placeholder="Enter the name of the host" required></td>
+            </tr> -->
+         <tr>
+                <td><label for="date"> <b>Date</b></label></td>
+                <td><input type="date" id="date" class="inputs" name="date" required></td>
+            </tr>
+            <tr>
+                <td><label for="starttime"><b>Start Time</b></label></td>
+                <td><input type="time" id="starttime" class="inputs" name="starttime" placeholder="Enter the start time" required></td>
+            </tr>
+            <tr>
+                <td><label for="endtime"><b>End Time</b></label></td>
+                <td><input type="time" id="endtime" class="inputs" name="endtime" placeholder="Enter the end time" required></td>
+            </tr>
+            <tr>
+                <td><label for="venue"><b>Venue</b> </label></td>
+                <td><input type="text" id="venue" class="inputs" name="venue" placeholder="Enter the venue" required></td>
+            </tr>
+            <tr>
+                <td><label for="description"><b>Description</b> </label></td>
+                <td><input type="text" id="description" class="inputs" name="description" placeholder="Enter the description" required></td>
+            </tr>
+            <tr>
+                <td><label for="img"><b>Image</b></label></td>
+                <td><input type="text" id="img" name="img" class="inputs" placeholder="Upload image" required></td>
+           </tr> 
+        </table>
+        </div>
+
+        <div>
+        <input type="submit" class="sub-button">
+    </div>
+</form>
+
+<!-- </main> -->
+</div>
+
+<%- include('../partials/footer.ejs')%>

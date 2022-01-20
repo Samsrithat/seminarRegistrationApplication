@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    
+    <header>
+        <p><a href='/'>
+        <img src="/images/logo.jpg" alt="Logo" class="img1"> </a> </p> <br>
+        <h1 class="style6"> Master in TechKnowledgy </h1>
+        <nav class="style2">
+            <% if(!user){ %>
+        <a class="style2" href='/users/new'> Sign up </a> &nbsp;
+      | &nbsp; <a class="style2" href='/users/login'> Log in </a>
+      <%} else{ %>
+        <a class="style2" href='/connections/newConnection'> Start new connections </a> &nbsp;
+     | <a class="style2" href='/users/profile'> Profile </a> &nbsp;
+      | &nbsp; <a class="style2" href='/users/logout'> Logout </a>
+        <%}%>
+        <hr> 
+        <% if(user && userName){ %>
+            <a>Welcome, <%= userName + '!' %></a>
+       <% } %>
+      &nbsp; <a class="style2" href='/connections'> Connections </a>
+        </nav>
+    </header>
+
+   <% if(errorMessages.length > 0) {%>
+       <% errorMessages.forEach(message=>{%>
+            <div class='error'>
+                <%=message%>
+            </div>
+        <%});%>
+    <%}%>
+
+    <% if(successMessages.length > 0) {%>
+        <% successMessages.forEach(message=>{%>
+             <div class='success'>
+                 <%=message%>
+             </div>
+         <%});%>
+     <%}%>

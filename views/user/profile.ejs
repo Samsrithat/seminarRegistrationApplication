@@ -1,0 +1,64 @@
+<%- include('../partials/header.ejs')%>
+
+<div class="content">
+
+    <h3>Welcome, <%=user.firstName + ' ' + user.lastName%>!</h3>
+    <%if(connections.length){ %>
+        <p>You have created the following connections</p>
+        <table class="tablee">
+            <tr>
+                <th class="thh">Connection</th>
+                <th class="thh">Category</th>
+                <th class="thh">Action</th>
+            </tr>
+       <% connections.forEach(connection => { %>
+        <tr>
+           <td class="tdd"> <a href = '/connections/<%= connection.id%>'><p><%= connection.title%></p></a> </td>
+           <td class="tdd"><p><%= connection.category%></p></td>
+           <td class="tdd">
+               <form>
+                   <button type = "submit" class="sub-button" formmethod="GET" formaction="/connections/<%=connection.id%>/edit">Update</button>
+                   <button type = "submit" class="sub-button" formmethod="POST" formaction="/connections/<%=connection.id%>?_method=DELETE">Delete</button>
+               </form>
+           </td>
+        </tr>
+        <% });%>
+    </table>
+    <%} else {%>
+                <p>You have not created any connections yet.</p>
+            <%}%>
+
+            <h3>RSVPs</h3>
+            
+            <% if(rsvpArray.length>0){ %>
+                <p>You have the following RSVP's</p>
+                <table class='tablee'>
+                    <tr>
+                        <th class='thh'>Connection</th>
+                        <th class='thh'>Category</th>
+                        <th class='thh'>Going?</th>
+                        <th class='thh'>Action</th>
+                    </tr>
+                    <% for(var i=0; i<rsvpArray.length; i++){ %>
+                        <tr>
+                            <td class='tdd'><a><%= rsvpArray[i].connectionid.title%></a> </td>
+                            <td class='tdd'><%= rsvpArray[i].connectionid.category%></td>
+                            <td class='tdd'><%= rsvpArray[i].status%></td>
+                            <td class='tdd'>
+                                <form>
+                                    <button class = "sub-button" type = "submit" formmethod="GET" formaction="/connections/<%= rsvpArray[i].connectionid._id%>">Update</button>
+                                    <button class = "sub-button" type = "submit" formmethod="POST" formaction="/connections/<%= rsvpArray[i].connectionid._id%>/rsvpDel">Delete</button> 
+                                </form>
+                            </td>
+                        </tr>
+
+                    <%}%>
+                </table>
+            <%} else { %>
+                <p> You have not RSVPed any connections </p>
+            <%}%>
+            
+
+</div>
+
+<%- include('../partials/footer.ejs')%>

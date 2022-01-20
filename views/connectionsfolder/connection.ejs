@@ -1,0 +1,36 @@
+<%- include('../partials/header.ejs')%>
+
+    <div class="content">
+        <h3 class="heading"><%= connection.category%></h3>
+        <h3 class="heading"><%= connection.title%></h3><br>
+        <div class="art4">
+            <img src = "<%= connection.img%>" class="img2" alt="Connection image" />
+            </div>
+            <div class= "art5">
+            <br><b> Hosted by: </b> <%= connection.host.firstName + ' ' + connection.host.lastName %> <br>
+            <br><b> Date:</b> <%= connection.date %> <br>
+            <br> <b>Start Time: </b><%= connection.starttime %> <br>
+        <br> <b>End Time: </b><%= connection.endtime %> <br>
+        <br><b> Venue:</b> <%= connection.venue %> <br>
+            <br><b> Description:</b> <%= connection.description %> <br>
+        <br>
+        <h3><%= rsvplt%> people are going!</h3>
+       <% if(user == connection.host._id){%>
+        <form>
+            <button type = "submit" class="buttons1" formmethod="GET" formaction="/connections/<%=connection.id%>/edit"> Update </button>
+            <button type = "submit" class="buttons1" formmethod="POST" formaction="/connections/<%=connection.id%>?_method=DELETE"> Delete </button>
+        </form>
+        <% } else{ %>
+                    
+        <p> RSVP to Attend!</p>
+                    <form method="POST">
+                        <button class = "yes" type = "submit" name = status value = 'YES' formaction="/connections/<%= connection.id%>/rsvp">Yes</button>
+                        <button class = "no" type = "submit" name = status value = 'NO' formaction="/connections/<%= connection.id%>/rsvp">No</button>
+                        <button class = "maybe" type = "submit" name = status value = 'MAYBE' formaction="/connections/<%= connection.id%>/rsvp">Maybe</button>  
+                    </form>
+                <%}%>
+            </div>
+        
+    </div>
+
+    <%- include('../partials/footer.ejs')%> 

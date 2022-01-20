@@ -1,0 +1,25 @@
+<%- include('../partials/header.ejs')%>
+
+ <div class = "content">
+
+<% if(groups){ 
+    for(let key in groups) { 
+        let connections=groups[key]; %>
+    <h3 class="cons">
+        <%=key%>
+    </h3>
+    <%connections.forEach(connection=>{ %>
+        <ul class="heading">
+            <li>
+                <a href="/connections/<%= connection.id%>">
+                    <%=connection.title%> 
+                </a>
+            </li>
+        </ul>
+        <% }); }}
+        else{ %>
+            <p>There are no connections to display.</p>
+            <%}%>
+
+ </div> 
+ <%- include('../partials/footer.ejs')%> 
